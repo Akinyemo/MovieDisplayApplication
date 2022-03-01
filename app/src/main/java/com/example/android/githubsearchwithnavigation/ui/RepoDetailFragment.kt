@@ -41,27 +41,27 @@ class RepoDetailFragment : Fragment(R.layout.repo_detail) {
 
     override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
         menuInflater.inflate(R.menu.activity_repo_detail, menu)
-        val bookmarkItem = menu.findItem(R.id.action_bookmark)
-        viewModel.getBookmarkedRepoByName(repo!!.name).observe(viewLifecycleOwner) { bookmarkedRepo ->
-             when (bookmarkedRepo) {
-                null -> {
-                    isBookmarked = false
-                    bookmarkItem.isChecked = false
-                    bookmarkItem.icon = AppCompatResources.getDrawable(
-                        requireContext(),
-                        R.drawable.ic_action_bookmark_off
-                    )
-                }
-                else -> {
-                    isBookmarked = true
-                    bookmarkItem.isChecked = true
-                    bookmarkItem.icon = AppCompatResources.getDrawable(
-                        requireContext(),
-                        R.drawable.ic_action_bookmark_on
-                    )
-                }
-            }
-        }
+//        val bookmarkItem = menu.findItem(R.id.action_bookmark)
+//        viewModel.getBookmarkedRepoByName(repo!!.name).observe(viewLifecycleOwner) { bookmarkedRepo ->
+//             when (bookmarkedRepo) {
+//                null -> {
+//                    isBookmarked = false
+//                    bookmarkItem.isChecked = false
+//                    bookmarkItem.icon = AppCompatResources.getDrawable(
+//                        requireContext(),
+//                        R.drawable.ic_action_bookmark_off
+//                    )
+//                }
+//                else -> {
+//                    isBookmarked = true
+//                    bookmarkItem.isChecked = true
+//                    bookmarkItem.icon = AppCompatResources.getDrawable(
+//                        requireContext(),
+//                        R.drawable.ic_action_bookmark_on
+//                    )
+//                }
+//            }
+//        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
