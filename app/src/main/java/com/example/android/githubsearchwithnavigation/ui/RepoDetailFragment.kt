@@ -6,44 +6,49 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuInflater
 import android.view.MenuItem
+import android.view.View
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.example.android.githubsearchwithnavigation.R
 import com.example.android.githubsearchwithnavigation.data.GitHubRepo
 import com.google.android.material.snackbar.Snackbar
 
 const val EXTRA_GITHUB_REPO = "com.example.android.githubsearchwithnavigation.GitHubRepo"
 
-class RepoDetailActivity : AppCompatActivity() {
+class RepoDetailFragment : Fragment(R.layout.repo_detail) {
     private var repo: GitHubRepo? = null
     private var isBookmarked = false
 
     private val viewModel: BookmarkedReposViewModel by viewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_repo_detail)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        if (intent != null && intent.hasExtra(EXTRA_GITHUB_REPO)) {
-            repo = intent.getSerializableExtra(EXTRA_GITHUB_REPO) as GitHubRepo
-            findViewById<TextView>(R.id.tv_repo_name).text = repo!!.name
-            findViewById<TextView>(R.id.tv_repo_stars).text = repo!!.stars.toString()
-            findViewById<TextView>(R.id.tv_repo_description).text = repo!!.description
-        }
+        setHasOptionsMenu(true)
+
+//        if (intent != null && intent.hasExtra(EXTRA_GITHUB_REPO)) {
+//            repo = intent.getSerializableExtra(EXTRA_GITHUB_REPO) as GitHubRepo
+//            findViewById<TextView>(R.id.tv_repo_name).text = repo!!.name
+//            findViewById<TextView>(R.id.tv_repo_stars).text = repo!!.stars.toString()
+//            findViewById<TextView>(R.id.tv_repo_description).text = repo!!.description
+//        }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
         menuInflater.inflate(R.menu.activity_repo_detail, menu)
         val bookmarkItem = menu.findItem(R.id.action_bookmark)
-        viewModel.getBookmarkedRepoByName(repo!!.name).observe(this) { bookmarkedRepo ->
+        viewModel.getBookmarkedRepoByName(repo!!.name).observe(viewLifecycleOwner) { bookmarkedRepo ->
              when (bookmarkedRepo) {
                 null -> {
                     isBookmarked = false
                     bookmarkItem.isChecked = false
                     bookmarkItem.icon = AppCompatResources.getDrawable(
-                        this,
+                        requireContext(),
                         R.drawable.ic_action_bookmark_off
                     )
                 }
@@ -51,13 +56,12 @@ class RepoDetailActivity : AppCompatActivity() {
                     isBookmarked = true
                     bookmarkItem.isChecked = true
                     bookmarkItem.icon = AppCompatResources.getDrawable(
-                        this,
+                        requireContext(),
                         R.drawable.ic_action_bookmark_on
                     )
                 }
             }
         }
-        return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -105,7 +109,7 @@ class RepoDetailActivity : AppCompatActivity() {
                 startActivity(intent)
             } catch (e: ActivityNotFoundException) {
                 Snackbar.make(
-                    findViewById(R.id.coordinator_layout),
+                    requireView(),
                     R.string.action_view_repo_error,
                     Snackbar.LENGTH_LONG
                 ).show()

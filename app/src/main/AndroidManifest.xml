@@ -12,18 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GitHubSearch">
         <activity
-            android:name=".ui.BookmarkedReposActivity"
-            android:exported="false"
-            android:parentActivityName=".ui.MainActivity" />
-        <activity
-            android:name=".ui.SettingsActivity"
-            android:exported="false"
-            android:parentActivityName=".ui.MainActivity" />
-        <activity
-            android:name=".ui.RepoDetailActivity"
-            android:exported="false"
-            android:parentActivityName=".ui.MainActivity" />
-        <activity
             android:name=".ui.MainActivity"
             android:exported="true"
             android:launchMode="singleTop">

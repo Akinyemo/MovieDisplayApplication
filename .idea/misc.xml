@@ -7,7 +7,10 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1503623188405797" />
         <entry key="app/src/main/res/layout/activity_repo_detail.xml" value="0.278125" />
         <entry key="app/src/main/res/layout/activity_settings.xml" value="0.11296859169199595" />
+        <entry key="app/src/main/res/layout/bookmarked_repos.xml" value="0.1" />
         <entry key="app/src/main/res/layout/github_repo_list_item.xml" value="0.1503623188405797" />
+        <entry key="app/src/main/res/layout/github_search.xml" value="0.20516304347826086" />
+        <entry key="app/src/main/res/layout/repo_detail.xml" value="0.20516304347826086" />
         <entry key="app/src/main/res/menu/activity_main.xml" value="0.14907407407407408" />
         <entry key="app/src/main/res/menu/activity_repo_detail.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/xml/settings.xml" value="0.25052083333333336" />
