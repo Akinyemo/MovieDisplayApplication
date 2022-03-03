@@ -17,7 +17,11 @@
     <fragment
         android:id="@+id/repo_detail"
         android:name="com.example.android.githubsearchwithnavigation.ui.RepoDetailFragment"
-        android:label="@string/label_repo_detail" />
+        android:label="@string/label_repo_detail">
+        <argument
+            android:name="repo"
+            app:argType="com.example.android.githubsearchwithnavigation.data.GitHubRepo" />
+    </fragment>
 
     <fragment
         android:id="@+id/bookmarked_repos"
