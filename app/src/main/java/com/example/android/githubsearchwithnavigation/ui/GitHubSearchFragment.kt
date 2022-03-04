@@ -94,7 +94,7 @@ class GitHubSearchFragment : Fragment(R.layout.github_search) {
     }
 
     private fun onGitHubRepoClick(repo: GitHubRepo) {
-        val directions = GitHubSearchFragmentDirections.navigateToRepoDetail(repo)
+        val directions = GitHubSearchFragmentDirections.navigateToRepoDetail(repo, 16)
         findNavController().navigate(directions)
     }
 }

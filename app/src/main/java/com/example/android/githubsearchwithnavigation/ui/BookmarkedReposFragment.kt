@@ -33,7 +33,7 @@ class BookmarkedReposFragment : Fragment(R.layout.bookmarked_repos) {
     }
 
     private fun onGitHubRepoClick(repo: GitHubRepo) {
-        val directions = BookmarkedReposFragmentDirections.navigateToRepoDetail(repo)
+        val directions = BookmarkedReposFragmentDirections.navigateToRepoDetail(repo, 32)
         findNavController().navigate(directions)
     }
 }

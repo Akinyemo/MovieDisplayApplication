@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -32,6 +33,8 @@ class RepoDetailFragment : Fragment(R.layout.repo_detail) {
         super.onViewCreated(view, savedInstanceState)
 
         setHasOptionsMenu(true)
+
+        Log.d("RepoDetailFragment", "args.intval: ${args.intVal}, args.repo: ${args.repo}")
 
         view.findViewById<TextView>(R.id.tv_repo_name).text = args.repo.name
         view.findViewById<TextView>(R.id.tv_repo_stars).text = args.repo.stars.toString()

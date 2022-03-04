@@ -21,6 +21,9 @@
         <argument
             android:name="repo"
             app:argType="com.example.android.githubsearchwithnavigation.data.GitHubRepo" />
+        <argument
+            android:name="intVal"
+            app:argType="integer" />
     </fragment>
 
     <fragment
