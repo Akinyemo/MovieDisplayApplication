@@ -1,3 +1,2 @@
-# GitHub Search with Navigation
+# Movie Display Application
 
-In this project, we'll update our GitHub search app to use the [Jetpack Navigation component](https://developer.android.com/guide/navigation) to provide a better navigation experience.  To work with this project, you can clone it from GitHub onto your development machine and then import it into Android Studio using File → New → Import...
