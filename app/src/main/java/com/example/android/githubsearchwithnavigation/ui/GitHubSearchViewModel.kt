@@ -6,12 +6,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.android.githubsearchwithnavigation.data.GitHubRepo
 import com.example.android.githubsearchwithnavigation.data.GitHubReposRepository
-import com.example.android.githubsearchwithnavigation.api.GitHubService
+import com.example.android.githubsearchwithnavigation.api.MovieService
 import com.example.android.githubsearchwithnavigation.data.LoadingStatus
 import kotlinx.coroutines.launch
 
 class GitHubSearchViewModel : ViewModel() {
-    private val repository = GitHubReposRepository(GitHubService.create())
+    private val repository = GitHubReposRepository(MovieService.create())
 
     private val _searchResults = MutableLiveData<List<GitHubRepo>?>(null)
     val searchResults: LiveData<List<GitHubRepo>?> = _searchResults

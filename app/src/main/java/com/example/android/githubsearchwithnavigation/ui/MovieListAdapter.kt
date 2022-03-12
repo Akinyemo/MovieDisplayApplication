@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.android.githubsearchwithnavigation.R
 import com.example.android.githubsearchwithnavigation.data.GitHubRepo
 
-class GitHubRepoListAdapter(private val onGitHubRepoClick: (GitHubRepo) -> Unit)
-    : RecyclerView.Adapter<GitHubRepoListAdapter.GitHubRepoViewHolder>() {
+class MovieListAdapter(private val onGitHubRepoClick: (GitHubRepo) -> Unit)
+    : RecyclerView.Adapter<MovieListAdapter.GitHubRepoViewHolder>() {
     var gitHubRepoList = listOf<GitHubRepo>()
 
     fun updateRepoList(newRepoList: List<GitHubRepo>?) {
@@ -21,7 +21,7 @@ class GitHubRepoListAdapter(private val onGitHubRepoClick: (GitHubRepo) -> Unit)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GitHubRepoViewHolder {
         val itemView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.github_repo_list_item, parent, false)
+            .inflate(R.layout.movie_list_item, parent, false)
         return GitHubRepoViewHolder(itemView, onGitHubRepoClick)
     }
 

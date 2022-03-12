@@ -3,21 +3,21 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_nav_graph"
-    app:startDestination="@id/github_search">
+    app:startDestination="@id/movie_search">
 
     <fragment
-        android:id="@+id/github_search"
-        android:name="com.example.android.githubsearchwithnavigation.ui.GitHubSearchFragment"
-        android:label="@string/label_github_search">
+        android:id="@+id/movie_search"
+        android:name="com.example.android.githubsearchwithnavigation.ui.MovieSearchFragment"
+        android:label="@string/label_movie_search">
         <action
             android:id="@+id/navigate_to_repo_detail"
-            app:destination="@id/repo_detail" />
+            app:destination="@id/movie_detail"/>
     </fragment>
 
     <fragment
-        android:id="@+id/repo_detail"
-        android:name="com.example.android.githubsearchwithnavigation.ui.RepoDetailFragment"
-        android:label="@string/label_repo_detail">
+        android:id="@+id/movie_detail"
+        android:name="com.example.android.githubsearchwithnavigation.ui.MovieDetailFragment"
+        android:label="@string/label_movie_detail">
         <argument
             android:name="repo"
             app:argType="com.example.android.githubsearchwithnavigation.data.GitHubRepo" />
@@ -31,8 +31,8 @@
         android:name="com.example.android.githubsearchwithnavigation.ui.BookmarkedReposFragment"
         android:label="@string/label_bookmarked_repos">
         <action
-            android:id="@+id/navigate_to_repo_detail"
-            app:destination="@id/repo_detail" />
+            android:id="@+id/navigate_to_movie_detail"
+            app:destination="@id/movie_detail"/>
     </fragment>
 
     <fragment

@@ -19,3 +19,17 @@ data class GitHubRepo(
     @Json(name = "stargazers_count")
     val stars: Int
 ) : Serializable
+
+
+data class Movie(
+    //@Json(name = "full_name")
+    val name: String,
+
+    //Gonna be under overview for api
+    val description: String,
+
+    //@Json(name = "html_url")
+    //gonna be under what I assume is vote_average
+    val rating: Double,
+
+) : Serializable
