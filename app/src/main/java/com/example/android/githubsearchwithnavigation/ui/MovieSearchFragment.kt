@@ -17,10 +17,10 @@ import com.example.android.githubsearchwithnavigation.data.GitHubRepo
 import com.example.android.githubsearchwithnavigation.data.LoadingStatus
 import com.google.android.material.progressindicator.CircularProgressIndicator
 
-class GitHubSearchFragment : Fragment(R.layout.github_search) {
+class MovieSearchFragment : Fragment(R.layout.movie_search) {
     private val TAG = "GitHubSearchFragment"
 
-    private val repoListAdapter = GitHubRepoListAdapter(::onGitHubRepoClick)
+    private val repoListAdapter = MovieListAdapter(::onGitHubRepoClick)
     private val viewModel: GitHubSearchViewModel by viewModels()
 
     private lateinit var searchBoxET: EditText
@@ -94,7 +94,7 @@ class GitHubSearchFragment : Fragment(R.layout.github_search) {
     }
 
     private fun onGitHubRepoClick(repo: GitHubRepo) {
-        val directions = GitHubSearchFragmentDirections.navigateToRepoDetail(repo, 16)
+        val directions = MovieSearchFragmentDirections.navigateToRepoDetail(repo, 16)
         findNavController().navigate(directions)
     }
 }

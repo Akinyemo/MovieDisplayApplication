@@ -1,5 +1,6 @@
 package com.example.android.githubsearchwithnavigation.data
 
-data class GitHubSearchResults(
+data class MovieSearchResults(
     val items: List<GitHubRepo>
+    //val items: List<Movie>
 )

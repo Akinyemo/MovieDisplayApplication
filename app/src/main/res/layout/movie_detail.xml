@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="8dp"
-    tools:context=".ui.RepoDetailFragment">
+    tools:context=".ui.MovieDetailFragment">
 
     <TextView
         android:id="@+id/tv_repo_name"

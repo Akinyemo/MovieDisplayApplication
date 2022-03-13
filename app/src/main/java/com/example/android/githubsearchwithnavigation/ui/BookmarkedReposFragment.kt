@@ -1,10 +1,7 @@
 package com.example.android.githubsearchwithnavigation.ui
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -14,7 +11,7 @@ import com.example.android.githubsearchwithnavigation.R
 import com.example.android.githubsearchwithnavigation.data.GitHubRepo
 
 class BookmarkedReposFragment : Fragment(R.layout.bookmarked_repos) {
-    private val repoListAdapter = GitHubRepoListAdapter(::onGitHubRepoClick)
+    private val repoListAdapter = MovieListAdapter(::onGitHubRepoClick)
     private lateinit var bookmarkedReposRV: RecyclerView
 
     private val viewModel: BookmarkedReposViewModel by viewModels()
@@ -33,7 +30,7 @@ class BookmarkedReposFragment : Fragment(R.layout.bookmarked_repos) {
     }
 
     private fun onGitHubRepoClick(repo: GitHubRepo) {
-        val directions = BookmarkedReposFragmentDirections.navigateToRepoDetail(repo, 32)
+        val directions = BookmarkedReposFragmentDirections.navigateToMovieDetail(repo, 32)
         findNavController().navigate(directions)
     }
 }

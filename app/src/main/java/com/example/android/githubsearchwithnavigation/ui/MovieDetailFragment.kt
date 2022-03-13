@@ -3,7 +3,6 @@ package com.example.android.githubsearchwithnavigation.ui
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -11,21 +10,19 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
-import androidx.activity.viewModels
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.example.android.githubsearchwithnavigation.R
-import com.example.android.githubsearchwithnavigation.data.GitHubRepo
 import com.google.android.material.snackbar.Snackbar
 
 const val EXTRA_GITHUB_REPO = "com.example.android.githubsearchwithnavigation.GitHubRepo"
 
-class RepoDetailFragment : Fragment(R.layout.repo_detail) {
+class MovieDetailFragment : Fragment(R.layout.movie_detail) {
     private var isBookmarked = false
 
-    private val args: RepoDetailFragmentArgs by navArgs()
+    private val args: MovieDetailFragmentArgs by navArgs()
 
     private val viewModel: BookmarkedReposViewModel by viewModels()
 
