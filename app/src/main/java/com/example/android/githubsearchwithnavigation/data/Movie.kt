@@ -22,13 +22,14 @@ data class GitHubRepo(
 
 
 data class Movie(
-    //@Json(name = "full_name")
+    @Json(name = "title")
     val name: String,
 
     //Gonna be under overview for api
+    @Json(name = "overview")
     val description: String,
 
-    //@Json(name = "html_url")
+    @Json(name = "vote_average")
     //gonna be under what I assume is vote_average
     val rating: Double,
 

@@ -32,6 +32,7 @@ class MovieListAdapter(private val onGitHubRepoClick: (GitHubRepo) -> Unit)
     class GitHubRepoViewHolder(itemView: View, val onClick: (GitHubRepo) -> Unit)
         : RecyclerView.ViewHolder(itemView) {
         private val nameTV: TextView = itemView.findViewById(R.id.tv_name)
+        private val descTV: TextView = itemView.findViewById(R.id.tv_repo_description)
         private var currentGitHubRepo: GitHubRepo? = null
 
         init {
@@ -43,6 +44,7 @@ class MovieListAdapter(private val onGitHubRepoClick: (GitHubRepo) -> Unit)
         fun bind(gitHubRepo: GitHubRepo) {
             currentGitHubRepo = gitHubRepo
             nameTV.text = gitHubRepo.name
+            descTV.text =  "Description: " +gitHubRepo.description
         }
     }
 }
