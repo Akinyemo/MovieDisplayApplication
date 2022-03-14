@@ -61,6 +61,10 @@
 
     <string name="pref_language_not_set">Not set</string>
 
+    <string name="rating_description">Rating on IMDb:</string>
+    <string name="tv_view_on_imdb">View on IMDb</string>
+    <string name="tv_view_on_youtube">Watch Trailer on YouTube</string>
+
     <plurals name="pref_language_summary">
         <item quantity="one">%d language</item>
         <item quantity="other">%d languages</item>

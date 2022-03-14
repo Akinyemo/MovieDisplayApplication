@@ -2,6 +2,7 @@ package com.example.android.githubsearchwithnavigation.ui
 
 import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.content.res.Resources
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +10,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
@@ -34,8 +36,8 @@ class MovieDetailFragment : Fragment(R.layout.movie_detail) {
         Log.d("RepoDetailFragment", "args.intval: ${args.intVal}, args.repo: ${args.repo}")
 
         view.findViewById<TextView>(R.id.tv_repo_name).text = args.repo.name
-        view.findViewById<TextView>(R.id.tv_repo_stars).text = args.repo.stars.toString()
         view.findViewById<TextView>(R.id.tv_repo_description).text = args.repo.description
+        view.findViewById<ImageView>(R.id.iv_rating_1).setImageDrawable(resources.getDrawable(R.drawable.ic_baseline_star_rate_36, null))
     }
 
     override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
