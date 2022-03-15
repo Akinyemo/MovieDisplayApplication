@@ -2,6 +2,7 @@ package com.example.android.githubsearchwithnavigation.ui
 
 import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.content.res.Resources
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +10,7 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
@@ -17,14 +19,10 @@ import androidx.navigation.fragment.navArgs
 import com.example.android.githubsearchwithnavigation.R
 import com.google.android.material.snackbar.Snackbar
 
-const val EXTRA_GITHUB_REPO = "com.example.android.githubsearchwithnavigation.GitHubRepo"
+const val EXTRA_MOVIE_REPO = "com.example.android.githubsearchwithnavigation.MovieRepo"
 
 class MovieDetailFragment : Fragment(R.layout.movie_detail) {
-    private var isBookmarked = false
-
     private val args: MovieDetailFragmentArgs by navArgs()
-
-    private val viewModel: BookmarkedReposViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -34,47 +32,18 @@ class MovieDetailFragment : Fragment(R.layout.movie_detail) {
         Log.d("RepoDetailFragment", "args.intval: ${args.intVal}, args.repo: ${args.repo}")
 
         view.findViewById<TextView>(R.id.tv_repo_name).text = args.repo.name
-        view.findViewById<TextView>(R.id.tv_repo_stars).text = args.repo.stars.toString()
         view.findViewById<TextView>(R.id.tv_repo_description).text = args.repo.description
+        view.findViewById<ImageView>(R.id.iv_rating_1).setImageDrawable(resources.getDrawable(R.drawable.ic_baseline_star_rate_36, null))
     }
 
     override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
         menuInflater.inflate(R.menu.activity_repo_detail, menu)
-        val bookmarkItem = menu.findItem(R.id.action_bookmark)
-        viewModel.getBookmarkedRepoByName(args.repo.name).observe(viewLifecycleOwner) { bookmarkedRepo ->
-             when (bookmarkedRepo) {
-                null -> {
-                    isBookmarked = false
-                    bookmarkItem.isChecked = false
-                    bookmarkItem.icon = AppCompatResources.getDrawable(
-                        requireContext(),
-                        R.drawable.ic_action_bookmark_off
-                    )
-                }
-                else -> {
-                    isBookmarked = true
-                    bookmarkItem.isChecked = true
-                    bookmarkItem.icon = AppCompatResources.getDrawable(
-                        requireContext(),
-                        R.drawable.ic_action_bookmark_on
-                    )
-                }
-            }
-        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId) {
-            R.id.action_view_repo -> {
-                viewRepoOnWeb()
-                true
-            }
             R.id.action_share -> {
-                shareRepo()
-                true
-            }
-            R.id.action_bookmark -> {
-                toggleRepoBookmark(item)
+                shareMovie()
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -85,19 +54,8 @@ class MovieDetailFragment : Fragment(R.layout.movie_detail) {
      * This method toggles the state of the bookmark icon in the top app bar whenever the user
      * clicks it.
      */
-    private fun toggleRepoBookmark(menuItem: MenuItem) {
-        isBookmarked = !isBookmarked
-        when (isBookmarked) {
-            true -> {
-                viewModel.addBookmarkedRepo(args.repo)
-            }
-            false -> {
-                viewModel.removeBookmarkedRepo(args.repo)
-            }
-        }
-    }
 
-    private fun viewRepoOnWeb() {
+    private fun viewMovieOnIMDb() {
         val intent: Intent = Uri.parse(args.repo.url).let {
             Intent(Intent.ACTION_VIEW, it)
         }
@@ -112,7 +70,7 @@ class MovieDetailFragment : Fragment(R.layout.movie_detail) {
         }
     }
 
-    private fun shareRepo() {
+    private fun shareMovie() {
         val text = getString(R.string.share_text, args.repo.name, args.repo.url)
         val intent: Intent = Intent().apply {
             action = Intent.ACTION_SEND
