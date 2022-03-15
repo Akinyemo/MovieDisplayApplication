@@ -26,6 +26,16 @@
             android:visibility="invisible"
             android:text="@string/search_error" />
 
+        <TextView
+            android:id="@+id/tv_search_no_results"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:textAppearance="?attr/textAppearanceBody1"
+            android:textColor="?attr/colorError"
+            android:visibility="invisible"
+            android:text="@string/label_no_search_results" />
+
         <com.google.android.material.progressindicator.CircularProgressIndicator
             android:id="@+id/loading_indicator"
             android:layout_width="wrap_content"

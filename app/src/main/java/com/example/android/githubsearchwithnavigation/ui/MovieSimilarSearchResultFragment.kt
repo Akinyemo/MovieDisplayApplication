@@ -28,6 +28,7 @@ class MovieSimilarSearchResultFragment : Fragment(R.layout.movie_similar_search)
         private lateinit var searchResultsListRV: RecyclerView
         private lateinit var searchErrorTV: TextView
         private lateinit var loadingIndicator: CircularProgressIndicator
+        private lateinit var noSearchResults: TextView
 
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
@@ -35,6 +36,7 @@ class MovieSimilarSearchResultFragment : Fragment(R.layout.movie_similar_search)
             searchResultsListRV = view.findViewById(R.id.rv_search_results)
             searchErrorTV = view.findViewById(R.id.tv_search_error)
             loadingIndicator = view.findViewById(R.id.loading_indicator)
+            noSearchResults = view.findViewById(R.id.tv_search_no_results)
 
             searchResultsListRV.layoutManager = LinearLayoutManager(requireContext())
             searchResultsListRV.setHasFixedSize(true)
@@ -59,7 +61,12 @@ class MovieSimilarSearchResultFragment : Fragment(R.layout.movie_similar_search)
                     }
                     else -> {
                         loadingIndicator.visibility = View.INVISIBLE
-                        searchResultsListRV.visibility = View.VISIBLE
+                        if(repoListAdapter.itemCount > 0) {
+                            searchResultsListRV.visibility = View.VISIBLE
+                        }
+                        else{
+                            noSearchResults.visibility = View.VISIBLE
+                        }
                         searchErrorTV.visibility = View.INVISIBLE
                     }
                 }
