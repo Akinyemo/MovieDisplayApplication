@@ -11,3 +11,4 @@ https://developers.themoviedb.org/3/search/search-movies
 Original Prototype/Mock:
 https://www.figma.com/file/iF1spVQk8ZXEv06TcSk1tg/CS492-Final-Prototype?node-id=0%3A1
 
+https://docs.google.com/document/d/14hSz2SXQ2NS3hNMj9G67AiljcnZjv-ef9xP3b47qxZs/edit
