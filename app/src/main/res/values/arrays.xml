@@ -1,34 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="pref_sort_entries">
-        <item>@string/pref_sort_entry_stars</item>
-        <item>@string/pref_sort_entry_forks</item>
-        <item>@string/pref_sort_entry_updated</item>
+    <string-array name="pref_star_choices">
+        <item>"One"</item>
+        <item>"Two"</item>
+        <item>"Three"</item>
+        <item>"Four"</item>
+        <item>"Five"</item>
     </string-array>
 
-    <string-array name="pref_sort_values">
-        <item>@string/pref_sort_val_stars</item>
-        <item>@string/pref_sort_val_forks</item>
-        <item>@string/pref_sort_val_updated</item>
+    <string-array name="pref_star_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
     </string-array>
 
-    <string-array name="pref_language_entries">
-        <item>@string/pref_language_entry_c</item>
-        <item>@string/pref_language_entry_cpp</item>
-        <item>@string/pref_language_entry_java</item>
-        <item>@string/pref_language_entry_javascript</item>
-        <item>@string/pref_language_entry_kotlin</item>
-        <item>@string/pref_language_entry_python</item>
-        <item>@string/pref_language_entry_rust</item>
+    <string-array name="pref_rating_choices">
+        <item>"G"</item>
+        <item>"PG"</item>
+        <item>"PG-13"</item>
+        <item>"R"</item>
     </string-array>
 
-    <string-array name="pref_language_values">
-        <item>@string/pref_language_val_c</item>
-        <item>@string/pref_language_val_cpp</item>
-        <item>@string/pref_language_val_java</item>
-        <item>@string/pref_language_val_javascript</item>
-        <item>@string/pref_language_val_kotlin</item>
-        <item>@string/pref_language_val_python</item>
-        <item>@string/pref_language_val_rust</item>
+    <string-array name="pref_rating_values">
+        <item>"G"</item>
+        <item>"PG"</item>
+        <item>"PG-13"</item>
+        <item>"R"</item>
     </string-array>
+
 </resources>

@@ -5,30 +5,27 @@
 
     <PreferenceCategory android:title="@string/pref_category_search">
         <ListPreference
-            android:title="@string/pref_sort_title"
-            android:key="@string/pref_sort_key"
-            android:entries="@array/pref_sort_entries"
-            android:entryValues="@array/pref_sort_values"
-            android:defaultValue="@string/pref_sort_default"
-            android:dialogTitle="@string/pref_sort_title"
+            android:title="Minimum IMDB Stars"
+            android:key="pref_min_stars_key"
+            android:entries="@array/pref_star_choices"
+            android:entryValues="@array/pref_star_values"
+            android:defaultValue="One"
+            android:dialogTitle="Minimum IMDB Stars"
             app:useSimpleSummaryProvider="true" />
 
-        <MultiSelectListPreference
-            android:title="@string/pref_language_title"
-            android:key="@string/pref_language_key"
-            android:entries="@array/pref_language_entries"
-            android:entryValues="@array/pref_language_values"
-            android:dialogTitle="@string/pref_language_title" />
-
-        <EditTextPreference
-            android:title="@string/pref_user_title"
-            android:key="@string/pref_user_key"
+        <ListPreference
+            android:title="Minimum Rating"
+            android:key="pref_min_rating_key"
+            android:entries="@array/pref_rating_choices"
+            android:entryValues="@array/pref_rating_values"
+            android:defaultValue="G"
+            android:dialogTitle="Minimum Rating"
             app:useSimpleSummaryProvider="true" />
 
         <SeekBarPreference
-            android:title="@string/pref_first_issues_title"
-            android:key="@string/pref_first_issues_key"
-            android:max="8"
+            android:title="Number of results"
+            android:key="pref_no_results_key"
+            android:max="20"
             app:showSeekBarValue="true" />
     </PreferenceCategory>
 

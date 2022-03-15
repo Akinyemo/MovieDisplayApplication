@@ -8,17 +8,16 @@ import retrofit2.http.Query
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-interface MovieService {
-    @GET("3/search/movie")
+interface SimilarMovieService {
+    @GET("3/search/movie/226979/similar")
     suspend fun searchMovies(
-        @Query("query") query: String,
         @Query("api_key") key: String
     ) : MovieSearchResults
 
     //Changing this file to query for a specific movie
     companion object {
         private const val BASE_URL = "https://api.themoviedb.org/"
-        fun create() : MovieService {
+        fun create() : SimilarMovieService {
             val moshi = Moshi.Builder()
                 .addLast(KotlinJsonAdapterFactory())
                 .build()
@@ -26,7 +25,7 @@ interface MovieService {
                 .baseUrl(BASE_URL)
                 .addConverterFactory(MoshiConverterFactory.create(moshi))
                 .build()
-            return retrofit.create(MovieService::class.java)
+            return retrofit.create(SimilarMovieService::class.java)
         }
     }
 }
