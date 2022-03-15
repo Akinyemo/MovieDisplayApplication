@@ -9,6 +9,7 @@
     <string name="label_movie_detail">Movie Details</string>
     <string name="label_bookmarked_repos">Bookmarked Repos</string>
     <string name="label_settings">Settings</string>
+    <string name="label_search_results">Movie Search Results</string>
 
     <string name="action_bookmark">Bookmark this repo</string>
     <string name="action_bookmarks">View bookmarks</string>

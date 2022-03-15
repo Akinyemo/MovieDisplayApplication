@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.githubsearchwithnavigation.R
 import com.example.android.githubsearchwithnavigation.data.GitHubRepo
+import kotlin.reflect.KFunction0
 
 class MovieListAdapter(private val onGitHubRepoClick: (GitHubRepo) -> Unit)
     : RecyclerView.Adapter<MovieListAdapter.GitHubRepoViewHolder>() {
