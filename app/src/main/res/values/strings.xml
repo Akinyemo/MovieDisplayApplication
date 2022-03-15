@@ -9,6 +9,8 @@
     <string name="label_movie_detail">Movie Details</string>
     <string name="label_bookmarked_repos">Bookmarked Repos</string>
     <string name="label_settings">Settings</string>
+    <string name="label_search_results">Movie Search Results</string>
+    <string name="label_no_search_results">Sorry there were no Results</string>
 
     <string name="action_bookmark">Bookmark this repo</string>
     <string name="action_bookmarks">View bookmarks</string>
@@ -60,6 +62,10 @@
     <string name="pref_language_val_python" translatable="false">python</string>
 
     <string name="pref_language_not_set">Not set</string>
+
+    <string name="rating_description">Rating on IMDb:</string>
+    <string name="tv_view_on_imdb">View on IMDb</string>
+    <string name="tv_view_on_youtube">Watch Trailer on YouTube</string>
 
     <plurals name="pref_language_summary">
         <item quantity="one">%d language</item>
