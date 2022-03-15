@@ -10,8 +10,20 @@
         android:name="com.example.android.githubsearchwithnavigation.ui.MovieSearchFragment"
         android:label="@string/label_movie_search">
         <action
+            android:id="@+id/navigate_to_search_results"
+            app:destination="@id/movie_similar_search_results"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/movie_similar_search_results"
+        android:name="com.example.android.githubsearchwithnavigation.ui.MovieSimilarSearchResultFragment"
+        android:label="@string/label_search_results">
+        <action
             android:id="@+id/navigate_to_repo_detail"
             app:destination="@id/movie_detail"/>
+        <argument
+            android:name="searchResults"
+            app:argType="string"/>
     </fragment>
 
     <fragment
