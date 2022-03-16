@@ -36,18 +36,6 @@
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-<!--    <TextView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:text="This is the drawer content"-->
-<!--        android:background="@color/white" />-->
-
-<!--    <LinearLayout-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="match_parent">-->
-<!--        -->
-<!--    </LinearLayout>-->
-
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"

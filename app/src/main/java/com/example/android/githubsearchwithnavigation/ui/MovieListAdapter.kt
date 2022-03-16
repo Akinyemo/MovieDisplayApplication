@@ -6,46 +6,46 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.githubsearchwithnavigation.R
-import com.example.android.githubsearchwithnavigation.data.GitHubRepo
+import com.example.android.githubsearchwithnavigation.data.Movie
 import kotlin.reflect.KFunction0
 
-class MovieListAdapter(private val onGitHubRepoClick: (GitHubRepo) -> Unit)
-    : RecyclerView.Adapter<MovieListAdapter.GitHubRepoViewHolder>() {
-    var gitHubRepoList = listOf<GitHubRepo>()
+class MovieListAdapter(private val onMovieClick: (Movie) -> Unit)
+    : RecyclerView.Adapter<MovieListAdapter.movieViewHolder>() {
+    var movieList = listOf<Movie>()
 
-    fun updateRepoList(newRepoList: List<GitHubRepo>?) {
-        gitHubRepoList = newRepoList ?: listOf()
+    fun updateMovieList(newMovieList: List<Movie>?) {
+        movieList = newMovieList ?: listOf()
         notifyDataSetChanged()
     }
 
-    override fun getItemCount() = gitHubRepoList.size
+    override fun getItemCount() = movieList.size
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GitHubRepoViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): movieViewHolder {
         val itemView = LayoutInflater.from(parent.context)
             .inflate(R.layout.movie_list_item, parent, false)
-        return GitHubRepoViewHolder(itemView, onGitHubRepoClick)
+        return movieViewHolder(itemView, onMovieClick)
     }
 
-    override fun onBindViewHolder(holder: GitHubRepoViewHolder, position: Int) {
-        holder.bind(gitHubRepoList[position])
+    override fun onBindViewHolder(holder: movieViewHolder, position: Int) {
+        holder.bind(movieList[position])
     }
 
-    class GitHubRepoViewHolder(itemView: View, val onClick: (GitHubRepo) -> Unit)
+    class movieViewHolder(itemView: View, val onClick: (Movie) -> Unit)
         : RecyclerView.ViewHolder(itemView) {
         private val nameTV: TextView = itemView.findViewById(R.id.tv_name)
         private val descTV: TextView = itemView.findViewById(R.id.tv_repo_description)
-        private var currentGitHubRepo: GitHubRepo? = null
+        private var curentMovie: Movie? = null
 
         init {
             itemView.setOnClickListener {
-                currentGitHubRepo?.let(onClick)
+                curentMovie?.let(onClick)
             }
         }
 
-        fun bind(gitHubRepo: GitHubRepo) {
-            currentGitHubRepo = gitHubRepo
-            nameTV.text = gitHubRepo.name
-            descTV.text =  "Description: " +gitHubRepo.description
+        fun bind(movie: Movie) {
+            curentMovie = movie
+            nameTV.text = movie.name
+            descTV.text =  "Description: " + movie.description
         }
     }
 }

@@ -2,9 +2,9 @@
 <menu
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/bookmarked_repos"
-        android:icon="@drawable/ic_action_bookmarks"
-        android:title="@string/label_bookmarked_repos" />
+        android:id="@+id/movie_search"
+        android:icon="@drawable/ic_baseline_search_24"
+        android:title="Search For a Movie!"/>
     <item
         android:id="@+id/settings"
         android:icon="@drawable/ic_action_settings"

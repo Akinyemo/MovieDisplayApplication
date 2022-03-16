@@ -19,7 +19,7 @@
         android:name="com.example.android.githubsearchwithnavigation.ui.MovieSimilarSearchResultFragment"
         android:label="@string/label_search_results">
         <action
-            android:id="@+id/navigate_to_repo_detail"
+            android:id="@+id/navigate_to_movie_detail"
             app:destination="@id/movie_detail"/>
         <argument
             android:name="searchResults"
@@ -31,20 +31,11 @@
         android:name="com.example.android.githubsearchwithnavigation.ui.MovieDetailFragment"
         android:label="@string/label_movie_detail">
         <argument
-            android:name="repo"
-            app:argType="com.example.android.githubsearchwithnavigation.data.GitHubRepo" />
+            android:name="movie"
+            app:argType="com.example.android.githubsearchwithnavigation.data.Movie" />
         <argument
             android:name="intVal"
             app:argType="integer" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/bookmarked_repos"
-        android:name="com.example.android.githubsearchwithnavigation.ui.BookmarkedReposFragment"
-        android:label="@string/label_bookmarked_repos">
-        <action
-            android:id="@+id/navigate_to_movie_detail"
-            app:destination="@id/movie_detail"/>
     </fragment>
 
     <fragment

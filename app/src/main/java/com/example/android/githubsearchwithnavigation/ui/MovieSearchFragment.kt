@@ -13,12 +13,10 @@ import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.githubsearchwithnavigation.R
-import com.example.android.githubsearchwithnavigation.data.GitHubRepo
-import com.example.android.githubsearchwithnavigation.data.LoadingStatus
 import com.google.android.material.progressindicator.CircularProgressIndicator
 
 class MovieSearchFragment : Fragment(R.layout.movie_search) {
-    private val TAG = "GitHubSearchFragment"
+    private val TAG = "MovieSearchFragment"
 
     private lateinit var searchBoxET: EditText
 
@@ -26,7 +24,6 @@ class MovieSearchFragment : Fragment(R.layout.movie_search) {
         super.onViewCreated(view, savedInstanceState)
 
         searchBoxET = view.findViewById(R.id.et_search_box)
-
 
         val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
 
