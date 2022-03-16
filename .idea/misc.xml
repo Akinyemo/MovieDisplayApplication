@@ -5,9 +5,9 @@
       <map>
         <entry key="..\:/Users/Epikg/Documents/MovieDisplayApplication/app/src/main/res/layout/bookmarked_repos.xml" value="0.14722222222222223" />
         <entry key="..\:/Users/Epikg/Documents/MovieDisplayApplication/app/src/main/res/layout/movie_detail.xml" value="0.14722222222222223" />
+        <entry key="..\:/Users/bujbu/Google Drive/repos/MovieDisplayApplication/app/src/main/res/layout/activity_main.xml" value="0.15572916666666667" />
+        <entry key="..\:/Users/bujbu/Google Drive/repos/MovieDisplayApplication/app/src/main/res/menu/main_nav_drawer.xml" value="0.2" />
         <entry key="..\:/Users/bujbu/Google Drive/repos/MovieDisplayApplication/app/src/main/res/xml/settings.xml" value="0.18206521739130435" />
-        <entry key="..\:/Users/Epikg/Documents/MovieDisplayApplication/app/src/main/res/layout/movie_list_item.xml" value="0.12487335359675786" />
-        <entry key="..\:/Users/Epikg/Documents/MovieDisplayApplication/app/src/main/res/layout/movie_similar_search.xml" value="0.12273550724637682" />
         <entry key="app/src/main/res/layout/activity_bookmarked_repos.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1503623188405797" />
         <entry key="app/src/main/res/layout/activity_repo_detail.xml" value="0.278125" />
@@ -15,7 +15,6 @@
         <entry key="app/src/main/res/layout/bookmarked_repos.xml" value="0.1" />
         <entry key="app/src/main/res/layout/github_repo_list_item.xml" value="0.1503623188405797" />
         <entry key="app/src/main/res/layout/github_search.xml" value="0.20516304347826086" />
-        <entry key="app/src/main/res/layout/movie_detail.xml" value="0.21302083333333333" />
         <entry key="app/src/main/res/layout/repo_detail.xml" value="0.20516304347826086" />
         <entry key="app/src/main/res/menu/activity_main.xml" value="0.14907407407407408" />
         <entry key="app/src/main/res/menu/activity_repo_detail.xml" value="0.25104166666666666" />

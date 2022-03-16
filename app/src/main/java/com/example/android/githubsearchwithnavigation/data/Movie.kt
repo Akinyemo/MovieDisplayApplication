@@ -16,4 +16,7 @@ data class Movie(
     @Json(name = "vote_average")
     val rating: Double,
 
+    @Json(name="adult")
+    val adult: Boolean
+
 ) : Serializable

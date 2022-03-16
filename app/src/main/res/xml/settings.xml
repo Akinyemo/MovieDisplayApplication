@@ -4,22 +4,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory android:title="@string/pref_category_search">
-        <ListPreference
-            android:title="Minimum IMDB Stars"
-            android:key="pref_min_stars_key"
-            android:entries="@array/pref_star_choices"
-            android:entryValues="@array/pref_star_values"
-            android:defaultValue="One"
-            android:dialogTitle="Minimum IMDB Stars"
-            app:useSimpleSummaryProvider="true" />
+        <SeekBarPreference
+            android:title="Min rating"
+            android:key="pref_min_rating"
+            android:max="10"
+            app:showSeekBarValue="true" />
 
-        <ListPreference
-            android:title="Minimum Rating"
-            android:key="pref_min_rating_key"
-            android:entries="@array/pref_rating_choices"
-            android:entryValues="@array/pref_rating_values"
-            android:defaultValue="G"
-            android:dialogTitle="Minimum Rating"
+        <CheckBoxPreference
+            android:title="Include Adult Results"
+            android:key="pref_include_adult_key"
             app:useSimpleSummaryProvider="true" />
 
         <SeekBarPreference

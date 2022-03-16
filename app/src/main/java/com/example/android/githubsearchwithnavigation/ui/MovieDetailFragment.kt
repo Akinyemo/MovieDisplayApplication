@@ -29,10 +29,8 @@ class MovieDetailFragment : Fragment(R.layout.movie_detail) {
 
         setHasOptionsMenu(true)
 
-        Log.d("RepoDetailFragment", "args.intval: ${args.intVal}, args.repo: ${args.repo}")
-
-        view.findViewById<TextView>(R.id.tv_repo_name).text = args.repo.name
-        view.findViewById<TextView>(R.id.tv_repo_description).text = args.repo.description
+        view.findViewById<TextView>(R.id.tv_repo_name).text = args.movie.name
+        view.findViewById<TextView>(R.id.tv_repo_description).text = args.movie.description
         view.findViewById<ImageView>(R.id.iv_rating_1).setImageDrawable(resources.getDrawable(R.drawable.ic_baseline_star_rate_36, null))
     }
 
@@ -56,22 +54,24 @@ class MovieDetailFragment : Fragment(R.layout.movie_detail) {
      */
 
     private fun viewMovieOnIMDb() {
-        val intent: Intent = Uri.parse(args.repo.url).let {
-            Intent(Intent.ACTION_VIEW, it)
-        }
-        try {
-            startActivity(intent)
-        } catch (e: ActivityNotFoundException) {
-            Snackbar.make(
-                requireView(),
-                R.string.action_view_repo_error,
-                Snackbar.LENGTH_LONG
-            ).show()
-        }
+
+        // This needs done based on imdb id - api doesn't return a URL
+//        val intent: Intent = Uri.parse(args.movie.url).let {
+//            Intent(Intent.ACTION_VIEW, it)
+//        }
+//        try {
+//            startActivity(intent)
+//        } catch (e: ActivityNotFoundException) {
+//            Snackbar.make(
+//                requireView(),
+//                R.string.action_view_repo_error,
+//                Snackbar.LENGTH_LONG
+//            ).show()
+//        }
     }
 
     private fun shareMovie() {
-        val text = getString(R.string.share_text, args.repo.name, args.repo.url)
+        val text = getString(R.string.share_text, args.movie.name)//, args.movie.url)
         val intent: Intent = Intent().apply {
             action = Intent.ACTION_SEND
             putExtra(Intent.EXTRA_TEXT, text)

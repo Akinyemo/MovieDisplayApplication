@@ -1,6 +1,5 @@
 package com.example.android.githubsearchwithnavigation.data
 
-import com.example.android.githubsearchwithnavigation.api.MovieService
 import com.example.android.githubsearchwithnavigation.api.SimilarMovieService
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -12,11 +11,13 @@ class SimilarMoviesRepository(
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) {
     suspend fun loadRepositoriesSearch(
-        api_key: String
+        api_key: String,
+        movie_id: String,
+        include_adult: Boolean
     ): Result<List<Movie>> =
         withContext(ioDispatcher) {
             try {
-                val movies_list = service.searchMovies(api_key)
+                val movies_list = service.getSimilarMovies(movie_id, api_key, include_adult.toString())
                 Result.success(movies_list.items)
             } catch (e: Exception) {
                 Result.failure(e)
