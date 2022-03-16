@@ -19,10 +19,10 @@ import com.example.android.githubsearchwithnavigation.data.LoadingStatus
 import com.example.android.githubsearchwithnavigation.data.Movie
 import com.google.android.material.progressindicator.CircularProgressIndicator
 
-class MovieSimilarSearchResultFragment : Fragment(R.layout.movie_similar_search) {
+class SearchResultFragment : Fragment(R.layout.movie_search_results) {
     private val TAG = "MovieSimilarSearchResultFragment"
         private val viewModel: MovieSearchViewModel by viewModels()
-        private val args: MovieSimilarSearchResultFragmentArgs by navArgs()
+        private val args: SearchResultFragmentArgs by navArgs()
 
         private lateinit var searchResultsListRV: RecyclerView
         private lateinit var searchErrorTV: TextView
@@ -85,7 +85,7 @@ class MovieSimilarSearchResultFragment : Fragment(R.layout.movie_similar_search)
         }
 
     private fun onMovieClick(movie: Movie) {
-        val directions = MovieSimilarSearchResultFragmentDirections.navigateToMovieDetail(movie, 16)
+        val directions = SearchResultFragmentDirections.navigateToMovieDetail(movie, 16)
         findNavController().navigate(directions)
     }
 }

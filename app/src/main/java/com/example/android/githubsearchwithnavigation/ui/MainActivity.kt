@@ -40,3 +40,6 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 }
+
+// Sources:
+// with help from Hess in-class code

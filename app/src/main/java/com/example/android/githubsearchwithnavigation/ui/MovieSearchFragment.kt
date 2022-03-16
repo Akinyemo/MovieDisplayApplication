@@ -16,6 +16,7 @@ import com.example.android.githubsearchwithnavigation.R
 import com.google.android.material.progressindicator.CircularProgressIndicator
 
 class MovieSearchFragment : Fragment(R.layout.movie_search) {
+
     private val TAG = "MovieSearchFragment"
 
     private lateinit var searchBoxET: EditText
