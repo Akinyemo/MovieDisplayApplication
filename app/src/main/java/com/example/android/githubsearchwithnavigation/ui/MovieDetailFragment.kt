@@ -24,6 +24,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
 import com.google.android.youtube.player.YouTubePlayerFragment
+import com.google.android.youtube.player.YouTubePlayerSupportFragment
 import org.w3c.dom.Text
 
 
@@ -36,7 +37,7 @@ class MovieDetailFragment : Fragment(R.layout.movie_detail), YouTubePlayer.OnIni
     val api_key = "bba8404a924c32175d01bd606efbb093"
     var imdbId: String? = null
     var youtubePreviewId: String? = null
-    var youtubePlayerFragment: YouTubePlayerFragment? = null
+    var youtubePlayerFragment: YouTubePlayerSupportFragment? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -72,7 +73,8 @@ class MovieDetailFragment : Fragment(R.layout.movie_detail), YouTubePlayer.OnIni
 
             youtubePreviewId = youtubePreview?.key
             if (videos !== null) {
-                youtubePlayerFragment = parentFragmentManager.findFragmentById(R.id.youtube_fragment) as YouTubePlayerFragment?
+                youtubePlayerFragment =
+                    childFragmentManager.findFragmentById(R.id.youtube_fragment) as YouTubePlayerSupportFragment?
                 youtubePlayerFragment?.initialize("AIzaSyAooaLLzPeOb7pElBd13WsCJVyGvNljwZo", this)
             }
         }
@@ -86,7 +88,6 @@ class MovieDetailFragment : Fragment(R.layout.movie_detail), YouTubePlayer.OnIni
         view.findViewById<TextView>(R.id.tv_view_on_youtube).setOnClickListener {
             viewMovieOnYouTube()
         }
-
             view.findViewById<ImageView>(R.id.iv_rating_1)
                 .setImageDrawable(resources.getDrawable(R.drawable.ic_baseline_star_rate_36, null))
             val searchBtn: Button = view.findViewById(R.id.btn_similar)
@@ -176,7 +177,6 @@ class MovieDetailFragment : Fragment(R.layout.movie_detail), YouTubePlayer.OnIni
         p0: YouTubePlayer.Provider?,
         p1: YouTubeInitializationResult?
     ) {
-        TODO("Not yet implemented")
-        Log.e("YoutubePlayerFragment", "Initialization failure")
+        Log.e("YoutubePlayerFragment", p1!!.name)
     }
 }
