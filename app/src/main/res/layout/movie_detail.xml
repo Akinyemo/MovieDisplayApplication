@@ -1,109 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="8dp"
-    tools:context=".ui.MovieDetailFragment">
-
-    <TextView
-        android:id="@+id/tv_repo_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?attr/textAppearanceHeadline3"
-        android:layout_marginBottom="4dp"/>
-
-<!--    https://spin.atomicobject.com/2019/06/24/embedding-youtube-videos-in-android-applications/-->
-    <androidx.fragment.app.FragmentContainerView
-        android:name="com.google.android.youtube.player.YouTubePlayerSupportFragment"
-        android:id="@+id/youtube_fragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:id="@+id/tv_repo_description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?attr/textAppearanceBody1" />
-
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
     <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="8dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="8dp"
+        tools:context=".ui.MovieDetailFragment">
+
         <TextView
-            android:text="@string/rating_description"
+            android:id="@+id/tv_repo_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"/>
+            android:textAppearance="?attr/textAppearanceHeadline3"
+            android:layout_marginBottom="4dp"/>
 
-        <ImageView
-            android:id="@+id/iv_rating_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_star_outline_36"/>
+    <!--    https://spin.atomicobject.com/2019/06/24/embedding-youtube-videos-in-android-applications/-->
+        <androidx.fragment.app.FragmentContainerView
+            android:name="com.google.android.youtube.player.YouTubePlayerSupportFragment"
+            android:id="@+id/youtube_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
-        <ImageView
-            android:id="@+id/iv_rating_2"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/tv_repo_description"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_star_outline_36"/>
+            android:textAppearance="?attr/textAppearanceBody1" />
 
-        <ImageView
-            android:id="@+id/iv_rating_3"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_star_outline_36"/>
+            android:orientation="horizontal"
+            android:padding="8dp">
+            <TextView
+                android:text="@string/rating_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"/>
 
-        <ImageView
-            android:id="@+id/iv_rating_4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_star_outline_36"/>
+            <ImageView
+                android:id="@+id/iv_rating_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_star_outline_36"/>
 
-        <ImageView
-            android:id="@+id/iv_rating_5"
-            android:layout_width="wrap_content"
+            <ImageView
+                android:id="@+id/iv_rating_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_star_outline_36"/>
+
+            <ImageView
+                android:id="@+id/iv_rating_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_star_outline_36"/>
+
+            <ImageView
+                android:id="@+id/iv_rating_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_star_outline_36"/>
+
+            <ImageView
+                android:id="@+id/iv_rating_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_star_outline_36"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_star_outline_36"/>
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tv_view_on_imdb"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_view_on_imdb"
+                android:padding="8dp"
+                android:background="@drawable/button_background_orange"
+                android:layout_weight="1"
+                android:layout_marginRight="4dp"
+                android:textAlignment="center"/>
+            <TextView
+                android:id="@+id/tv_view_on_youtube"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/tv_view_on_youtube"
+                android:padding="8dp"
+                android:background="@drawable/button_background_red"
+                android:layout_weight="1"
+                android:layout_marginLeft="4dp"
+                android:textAlignment="center"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_similar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="4dp"
+            style="?attr/materialButtonStyle"
+            android:text="@string/label_similar_movies" />`
+
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <TextView
-            android:id="@+id/tv_view_on_imdb"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/tv_view_on_imdb"
-            android:padding="8dp"
-            android:background="@drawable/button_background_orange"
-            android:layout_weight="1"
-            android:layout_marginRight="4dp"
-            android:textAlignment="center"/>
-        <TextView
-            android:id="@+id/tv_view_on_youtube"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/tv_view_on_youtube"
-            android:padding="8dp"
-            android:background="@drawable/button_background_red"
-            android:layout_weight="1"
-            android:layout_marginLeft="4dp"
-            android:textAlignment="center"/>
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/btn_similar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="4dp"
-        style="?attr/materialButtonStyle"
-        android:text="@string/label_similar_movies" />
-
-
-</LinearLayout>
+</ScrollView>
