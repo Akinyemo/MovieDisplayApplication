@@ -171,8 +171,10 @@ class MovieDetailFragment : Fragment(R.layout.movie_detail), YouTubePlayer.OnIni
         p1: YouTubePlayer?,
         p2: Boolean
     ) {
-        p1?.cueVideo(youtubePreviewId)
-        p1?.setPlayerStyle(YouTubePlayer.PlayerStyle.DEFAULT)
+        if (youtubePreviewId !== null) {
+            p1?.cueVideo(youtubePreviewId)
+            p1?.setPlayerStyle(YouTubePlayer.PlayerStyle.DEFAULT)
+        }
     }
 
     override fun onInitializationFailure(
