@@ -149,7 +149,7 @@ class MovieDetailFragment : Fragment(R.layout.movie_detail), YouTubePlayer.OnIni
     }
 
     private fun shareMovie() {
-        val text = getString(R.string.share_text, args.movie.name, "")//, args.movie.url)
+        val text = getString(R.string.share_text, args.movie.name, "https://www.imdb.com/title/${imdbId}")
         val intent: Intent = Intent().apply {
             action = Intent.ACTION_SEND
             putExtra(Intent.EXTRA_TEXT, text)
