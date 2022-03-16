@@ -11,6 +11,8 @@
     <string name="label_search_results">Movie Search Results</string>
     <string name="label_no_search_results">Sorry there were no Results</string>
 
+    <string name="label_similar_movies"> View Similar Movies</string>
+
     <string name="action_share">Share</string>
     <string name="share_text">%1$s on XXXXX: %2$s</string>
 

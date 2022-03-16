@@ -29,11 +29,8 @@ class MovieSimilarSearchViewModel : ViewModel() {
     ) {
         viewModelScope.launch {
             _loadingStatus.value = LoadingStatus.LOADING
-            Log.d("oye_tag", "qUERY:" + query)
-            Log.d("oye_tag", "api:" + api_key)
-            val result = repository.loadRepositoriesSearch(query,api_key, include_adult)
+            val result = repository.loadRepositoriesSearch(api_key,query, include_adult)
             _searchResults.value = result.getOrNull()
-            Log.d("sauter_tag", "Results:" +  _searchResults.value)
             _loadingStatus.value = when (result.isSuccess) {
                 true ->  LoadingStatus.SUCCESS
                 false -> LoadingStatus.ERROR

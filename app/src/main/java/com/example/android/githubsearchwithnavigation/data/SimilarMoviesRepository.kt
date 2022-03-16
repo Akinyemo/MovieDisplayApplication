@@ -1,6 +1,5 @@
 package com.example.android.githubsearchwithnavigation.data
 
-import android.util.Log
 import com.example.android.githubsearchwithnavigation.api.SimilarMovieService
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers

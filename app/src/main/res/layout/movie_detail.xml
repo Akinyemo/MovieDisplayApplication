@@ -103,7 +103,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="4dp"
         style="?attr/materialButtonStyle"
-        android:text="@string/search" />
+        android:text="@string/label_similar_movies" />
 
 
 </LinearLayout>
