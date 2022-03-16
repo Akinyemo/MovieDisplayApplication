@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
+import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -17,21 +19,21 @@ import com.example.android.githubsearchwithnavigation.data.LoadingStatus
 import com.example.android.githubsearchwithnavigation.data.Movie
 import com.google.android.material.progressindicator.CircularProgressIndicator
 
-class SearchResultFragment : Fragment(R.layout.movie_search_results) {
-    private val TAG = "MovieSearchResultFragment"
-
-        private val movieListAdapter = MovieListAdapter(::onMovieClick)
+class MovieSimilarSearchResultFragment : Fragment(R.layout.movie_similar_search) {
+    private val TAG = "MovieSimilarSearchResultFragment"
         private val viewModel: MovieSearchViewModel by viewModels()
-        private val args: SearchResultFragmentArgs by navArgs()
+        private val args: MovieSimilarSearchResultFragmentArgs by navArgs()
 
         private lateinit var searchResultsListRV: RecyclerView
         private lateinit var searchErrorTV: TextView
         private lateinit var loadingIndicator: CircularProgressIndicator
         private lateinit var noSearchResults: TextView
 
+
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
 
+            val movieListAdapter = MovieListAdapter(::onMovieClick,requireContext())
             searchResultsListRV = view.findViewById(R.id.rv_search_results)
             searchErrorTV = view.findViewById(R.id.tv_search_error)
             loadingIndicator = view.findViewById(R.id.loading_indicator)
@@ -83,7 +85,7 @@ class SearchResultFragment : Fragment(R.layout.movie_search_results) {
         }
 
     private fun onMovieClick(movie: Movie) {
-        val directions = SearchResultFragmentDirections.navigateToMovieDetail(movie, 16)
+        val directions = MovieSimilarSearchResultFragmentDirections.navigateToMovieDetail(movie, 16)
         findNavController().navigate(directions)
     }
 }
