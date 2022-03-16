@@ -4,8 +4,6 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -19,12 +17,12 @@ import com.example.android.githubsearchwithnavigation.data.LoadingStatus
 import com.example.android.githubsearchwithnavigation.data.Movie
 import com.google.android.material.progressindicator.CircularProgressIndicator
 
-class MovieSimilarSearchResultFragment : Fragment(R.layout.movie_similar_search) {
-    private val TAG = "MovieSimilarSearchResultFragment"
+class SearchResultFragment : Fragment(R.layout.movie_search_results) {
+    private val TAG = "MovieSearchResultFragment"
 
         private val movieListAdapter = MovieListAdapter(::onMovieClick)
         private val viewModel: MovieSearchViewModel by viewModels()
-        private val args: MovieSimilarSearchResultFragmentArgs by navArgs()
+        private val args: SearchResultFragmentArgs by navArgs()
 
         private lateinit var searchResultsListRV: RecyclerView
         private lateinit var searchErrorTV: TextView
@@ -85,7 +83,7 @@ class MovieSimilarSearchResultFragment : Fragment(R.layout.movie_similar_search)
         }
 
     private fun onMovieClick(movie: Movie) {
-        val directions = MovieSimilarSearchResultFragmentDirections.navigateToMovieDetail(movie, 16)
+        val directions = SearchResultFragmentDirections.navigateToMovieDetail(movie, 16)
         findNavController().navigate(directions)
     }
 }

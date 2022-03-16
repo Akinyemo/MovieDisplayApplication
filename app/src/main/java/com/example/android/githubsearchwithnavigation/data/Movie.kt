@@ -17,6 +17,9 @@ data class Movie(
     val rating: Double,
 
     @Json(name="adult")
-    val adult: Boolean
+    val adult: Boolean,
+
+    @Json(name ="id")
+    val id: Integer
 
 ) : Serializable

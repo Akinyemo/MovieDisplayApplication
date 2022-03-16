@@ -11,12 +11,12 @@
         android:label="@string/label_movie_search">
         <action
             android:id="@+id/navigate_to_search_results"
-            app:destination="@id/movie_similar_search_results"/>
+            app:destination="@id/movie_search_results"/>
     </fragment>
 
     <fragment
-        android:id="@+id/movie_similar_search_results"
-        android:name="com.example.android.githubsearchwithnavigation.ui.MovieSimilarSearchResultFragment"
+        android:id="@+id/movie_search_results"
+        android:name="com.example.android.githubsearchwithnavigation.ui.SearchResultFragment"
         android:label="@string/label_search_results">
         <action
             android:id="@+id/navigate_to_movie_detail"
@@ -36,6 +36,21 @@
         <argument
             android:name="intVal"
             app:argType="integer" />
+        <action
+        android:id="@+id/navigate_to_movie_similar_results"
+        app:destination="@id/movie_similar_search"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/movie_similar_search"
+        android:name="com.example.android.githubsearchwithnavigation.ui.SimilarMoviesFragment"
+        android:label="@string/label_movie_detail">
+        <argument
+            android:name="movie"
+            app:argType="com.example.android.githubsearchwithnavigation.data.Movie" />
+        <action
+            android:id="@+id/navigate_back_to_movie_detail"
+            app:destination="@id/movie_detail"/>
     </fragment>
 
     <fragment
