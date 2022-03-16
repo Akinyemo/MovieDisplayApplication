@@ -21,8 +21,6 @@ import com.google.android.material.progressindicator.CircularProgressIndicator
 
 class MovieSimilarSearchResultFragment : Fragment(R.layout.movie_similar_search) {
     private val TAG = "MovieSimilarSearchResultFragment"
-
-        private val movieListAdapter = MovieListAdapter(::onMovieClick)
         private val viewModel: MovieSearchViewModel by viewModels()
         private val args: MovieSimilarSearchResultFragmentArgs by navArgs()
 
@@ -31,9 +29,11 @@ class MovieSimilarSearchResultFragment : Fragment(R.layout.movie_similar_search)
         private lateinit var loadingIndicator: CircularProgressIndicator
         private lateinit var noSearchResults: TextView
 
+
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
 
+            val movieListAdapter = MovieListAdapter(::onMovieClick,requireContext())
             searchResultsListRV = view.findViewById(R.id.rv_search_results)
             searchErrorTV = view.findViewById(R.id.tv_search_error)
             loadingIndicator = view.findViewById(R.id.loading_indicator)
