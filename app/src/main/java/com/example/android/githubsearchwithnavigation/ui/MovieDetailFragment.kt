@@ -10,13 +10,17 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.android.githubsearchwithnavigation.R
+import com.example.android.githubsearchwithnavigation.data.Movie
 import com.google.android.material.snackbar.Snackbar
 
 const val EXTRA_MOVIE_REPO = "com.example.android.githubsearchwithnavigation.MovieRepo"
@@ -32,6 +36,10 @@ class MovieDetailFragment : Fragment(R.layout.movie_detail) {
         view.findViewById<TextView>(R.id.tv_repo_name).text = args.movie.name
         view.findViewById<TextView>(R.id.tv_repo_description).text = args.movie.description
         view.findViewById<ImageView>(R.id.iv_rating_1).setImageDrawable(resources.getDrawable(R.drawable.ic_baseline_star_rate_36, null))
+        val searchBtn: Button = view.findViewById(R.id.btn_similar)
+        searchBtn.setOnClickListener {
+            onSimilarResultsFound(args.movie)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
@@ -47,7 +55,7 @@ class MovieDetailFragment : Fragment(R.layout.movie_detail) {
             else -> super.onOptionsItemSelected(item)
         }
     }
-
+    //btn_similar
     /**
      * This method toggles the state of the bookmark icon in the top app bar whenever the user
      * clicks it.
@@ -78,5 +86,9 @@ class MovieDetailFragment : Fragment(R.layout.movie_detail) {
             type = "text/plain"
         }
         startActivity(Intent.createChooser(intent, null))
+    }
+    private fun onSimilarResultsFound(movie: Movie) {
+        val directions = MovieDetailFragmentDirections.navigateToMovieSimilarResults(movie)
+        findNavController().navigate(directions)
     }
 }

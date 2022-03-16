@@ -97,4 +97,13 @@
             android:textAlignment="center"/>
     </LinearLayout>
 
+    <Button
+        android:id="@+id/btn_similar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="4dp"
+        style="?attr/materialButtonStyle"
+        android:text="@string/search" />
+
+
 </LinearLayout>
