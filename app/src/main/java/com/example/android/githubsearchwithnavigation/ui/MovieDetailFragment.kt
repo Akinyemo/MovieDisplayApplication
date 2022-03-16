@@ -77,6 +77,14 @@ class MovieDetailFragment : Fragment(R.layout.movie_detail), YouTubePlayer.OnIni
                     childFragmentManager.findFragmentById(R.id.youtube_fragment) as YouTubePlayerSupportFragment?
                 youtubePlayerFragment?.initialize("AIzaSyAooaLLzPeOb7pElBd13WsCJVyGvNljwZo", this)
             }
+
+            if (youtubePreview == null) {
+                childFragmentManager.findFragmentById(R.id.youtube_fragment)?.view?.visibility = View.INVISIBLE
+                view.findViewById<TextView>(R.id.tv_view_on_youtube).visibility = View.INVISIBLE
+            } else {
+                childFragmentManager.findFragmentById(R.id.youtube_fragment)?.view?.visibility = View.VISIBLE
+                view.findViewById<TextView>(R.id.tv_view_on_youtube).visibility = View.VISIBLE
+            }
         }
 
         view.findViewById<TextView>(R.id.tv_repo_name).text = args.movie.name
