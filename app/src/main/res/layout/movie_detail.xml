@@ -17,8 +17,8 @@
         android:layout_marginBottom="4dp"/>
 
 <!--    https://spin.atomicobject.com/2019/06/24/embedding-youtube-videos-in-android-applications/-->
-    <fragment
-        android:name="com.google.android.youtube.player.YouTubePlayerFragment"
+    <androidx.fragment.app.FragmentContainerView
+        class="com.google.android.youtube.player.YouTubePlayerSupportFragment"
         android:id="@+id/youtube_fragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

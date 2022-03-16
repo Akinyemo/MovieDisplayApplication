@@ -1,7 +1,5 @@
 package com.example.android.githubsearchwithnavigation.data
 
-import com.example.android.githubsearchwithnavigation.api.MovieService
-import com.example.android.githubsearchwithnavigation.api.SimilarMovieService
 import com.example.android.githubsearchwithnavigation.api.VideoService
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -15,10 +13,10 @@ class VideoRepository(
     suspend fun getVideos(
         movie_id: Integer,
         api_key: String
-    ): Result<List<Video>> =
+    ): Result<Videos> =
         withContext(ioDispatcher) {
             try {
-                val videos = service.getMovieDetails(movie_id, api_key)
+                val videos = service.getVideos(movie_id, api_key)
                 Result.success(videos)
             } catch (e: Exception) {
                 Result.failure(e)

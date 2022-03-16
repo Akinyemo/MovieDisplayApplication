@@ -1,9 +1,7 @@
 package com.example.android.githubsearchwithnavigation.api
 
 import android.util.Log
-import com.example.android.githubsearchwithnavigation.data.MovieDetails
-import com.example.android.githubsearchwithnavigation.data.MovieSearchResults
-import com.example.android.githubsearchwithnavigation.data.Video
+import com.example.android.githubsearchwithnavigation.data.Videos
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.http.GET
@@ -14,10 +12,10 @@ import retrofit2.http.Path
 
 interface VideoService {
     @GET("3/movie/{movie_id}/videos")
-    suspend fun getMovieDetails(
+    suspend fun getVideos(
         @Path("movie_id") movie_id: Integer,
         @Query("api_key") api_key: String
-    ) : List<Video>
+    ) : Videos
 
     //Changing this file to query for a specific movie
     companion object {

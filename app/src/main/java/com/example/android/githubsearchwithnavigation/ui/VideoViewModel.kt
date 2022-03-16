@@ -5,8 +5,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.android.githubsearchwithnavigation.api.MovieService
-import com.example.android.githubsearchwithnavigation.api.SearchMovieService
 import com.example.android.githubsearchwithnavigation.api.VideoService
 import com.example.android.githubsearchwithnavigation.data.*
 import kotlinx.coroutines.launch
@@ -14,8 +12,8 @@ import kotlinx.coroutines.launch
 class VideoViewModel : ViewModel() {
     private val repository = VideoRepository(VideoService.create())
 
-    private val _searchResults = MutableLiveData<List<Video>>(null)
-    val searchResults: LiveData<List<Video>?> = _searchResults
+    private val _searchResults = MutableLiveData<Videos>(null)
+    val searchResults: LiveData<Videos?> = _searchResults
 
     private val _loadingStatus = MutableLiveData(LoadingStatus.SUCCESS)
     val loadingStatus: LiveData<LoadingStatus> = _loadingStatus
@@ -32,7 +30,7 @@ class VideoViewModel : ViewModel() {
                 true ->  LoadingStatus.SUCCESS
                 false -> LoadingStatus.ERROR
             }
-            Log.d("sauter_tag", "ViewModel Results: " + result.toString())
+            Log.d("sauter_tag", "VideoViewModel Results: " + result.toString())
         }
     }
 }

@@ -62,7 +62,7 @@ class SearchResultFragment : Fragment(R.layout.movie_search_results) {
                     }
                     else -> {
                         loadingIndicator.visibility = View.INVISIBLE
-                        if(movieListAdapter.movieList.isNotEmpty()) {
+                        if(movieListAdapter.itemCount > 0) {
                             searchResultsListRV.visibility = View.VISIBLE
                         }
                         else{

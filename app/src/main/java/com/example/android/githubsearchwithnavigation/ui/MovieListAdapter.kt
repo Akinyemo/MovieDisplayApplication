@@ -12,10 +12,10 @@ import com.example.android.githubsearchwithnavigation.R
 import com.example.android.githubsearchwithnavigation.data.Movie
 
 class MovieListAdapter(private val onMovieClick: (Movie) -> Unit,context : Context)
-    : RecyclerView.Adapter<MovieListAdapter.movieViewHolder>() {
+    : RecyclerView.Adapter<MovieListAdapter.MovieViewHolder>() {
     var movieList = listOf<Movie>()
     val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context)
-    var limit = sharedPrefs.getInt("pref_no_results_key",0)
+    var limit = sharedPrefs.getInt("pref_no_results_key",10)
     var lowestRating = sharedPrefs.getInt("pref_min_rating", 0)
     fun updateMovieList(newMovieList: List<Movie>?) {
 
@@ -35,17 +35,17 @@ class MovieListAdapter(private val onMovieClick: (Movie) -> Unit,context : Conte
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): movieViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val itemView = LayoutInflater.from(parent.context)
             .inflate(R.layout.movie_list_item, parent, false)
-        return movieViewHolder(itemView, onMovieClick)
+        return MovieViewHolder(itemView, onMovieClick)
     }
 
-    override fun onBindViewHolder(holder: movieViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         holder.bind(movieList[position])
     }
 
-    class movieViewHolder(itemView: View, val onClick: (Movie) -> Unit)
+    class MovieViewHolder(itemView: View, val onClick: (Movie) -> Unit)
         : RecyclerView.ViewHolder(itemView) {
         private val nameTV: TextView = itemView.findViewById(R.id.tv_name)
         private val descTV: TextView = itemView.findViewById(R.id.tv_repo_description)

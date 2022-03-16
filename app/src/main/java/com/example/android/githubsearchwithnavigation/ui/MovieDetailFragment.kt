@@ -10,7 +10,6 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -18,22 +17,26 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.android.githubsearchwithnavigation.R
-import com.example.android.githubsearchwithnavigation.data.Video
 import com.example.android.githubsearchwithnavigation.data.Movie
+import com.example.android.githubsearchwithnavigation.data.Video
+import com.example.android.githubsearchwithnavigation.data.Videos
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
 import com.google.android.youtube.player.YouTubePlayerFragment
+import org.w3c.dom.Text
+
 
 const val EXTRA_MOVIE_REPO = "com.example.android.githubsearchwithnavigation.MovieRepo"
 
-class MovieDetailFragment : Fragment(R.layout.movie_detail), YouTubePlayer.OnInitializedListener {
+class MovieDetailFragment : Fragment(R.layout.movie_detail), YouTubePlayer.OnInitializedListener{
     private val args: MovieDetailFragmentArgs by navArgs()
     private val movieDetailViewModel: MovieDetailViewModel by viewModels()
     private val videoViewModel: VideoViewModel by viewModels()
     val api_key = "bba8404a924c32175d01bd606efbb093"
-    var imdb_Id: String? = null
-    var youtube_preview_id: String? = null
+    var imdbId: String? = null
+    var youtubePreviewId: String? = null
+    var youtubePlayerFragment: YouTubePlayerFragment? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -41,15 +44,14 @@ class MovieDetailFragment : Fragment(R.layout.movie_detail), YouTubePlayer.OnIni
         setHasOptionsMenu(true)
 
         //https://spin.atomicobject.com/2019/06/24/embedding-youtube-videos-in-android-applications/
-        val youtubePlayerFragment = parentFragmentManager.findFragmentById(R.id.youtube_fragment) as YouTubePlayerFragment
-        youtubePlayerFragment.initialize("xxxxxx", this)
+        //youtubePlayerFragment = childFragmentManager.findFragmentById(R.id.youtube_fragment) as YouTubePlayerFragment?
         var vote_count: Double?
 
         movieDetailViewModel.loadMovieDetails(args.movie.id, api_key)
         videoViewModel.loadVideos(args.movie.id, api_key)
 
         movieDetailViewModel.searchResults.observe(viewLifecycleOwner) { movieDetails ->
-            imdb_Id = movieDetails?.imdb_id
+            imdbId = movieDetails?.imdb_id
             vote_count = movieDetails?.vote_average
             Log.d("Test", vote_count.toString())
 
@@ -63,19 +65,27 @@ class MovieDetailFragment : Fragment(R.layout.movie_detail), YouTubePlayer.OnIni
         }
 
         videoViewModel.searchResults.observe(viewLifecycleOwner) { videos ->
-            val youtubePreview: Video? = videos?.find { video ->
+            val youtubePreview: Video? = videos?.videos?.find { video ->
                 video.site == "YouTube"
                 video.type == "Trailer"
             }
 
-            youtube_preview_id = youtubePreview?.key
-
+            youtubePreviewId = youtubePreview?.key
+            if (videos !== null) {
+                youtubePlayerFragment = parentFragmentManager.findFragmentById(R.id.youtube_fragment) as YouTubePlayerFragment?
+                youtubePlayerFragment?.initialize("AIzaSyAooaLLzPeOb7pElBd13WsCJVyGvNljwZo", this)
+            }
         }
 
         view.findViewById<TextView>(R.id.tv_repo_name).text = args.movie.name
         view.findViewById<TextView>(R.id.tv_repo_description).text = args.movie.description
         view.findViewById<TextView>(R.id.tv_view_on_imdb).setOnClickListener {
             viewMovieOnIMDb()
+        }
+
+        view.findViewById<TextView>(R.id.tv_view_on_youtube).setOnClickListener {
+            viewMovieOnYouTube()
+        }
 
             view.findViewById<ImageView>(R.id.iv_rating_1)
                 .setImageDrawable(resources.getDrawable(R.drawable.ic_baseline_star_rate_36, null))
@@ -83,7 +93,6 @@ class MovieDetailFragment : Fragment(R.layout.movie_detail), YouTubePlayer.OnIni
             searchBtn.setOnClickListener {
                 onSimilarResultsFound(args.movie)
             }
-        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
@@ -108,7 +117,24 @@ class MovieDetailFragment : Fragment(R.layout.movie_detail), YouTubePlayer.OnIni
     private fun viewMovieOnIMDb() {
 
         // This needs done based on imdb id - api doesn't return a URL
-        val intent: Intent = Uri.parse("https://www.imdb.com/title/${imdb_Id}").let {
+        val intent: Intent = Uri.parse("https://www.imdb.com/title/${imdbId}").let {
+            Intent(Intent.ACTION_VIEW, it)
+        }
+        try {
+            startActivity(intent)
+        } catch (e: ActivityNotFoundException) {
+            Snackbar.make(
+                requireView(),
+                R.string.action_view_repo_error,
+                Snackbar.LENGTH_LONG
+            ).show()
+        }
+    }
+
+    private fun viewMovieOnYouTube() {
+
+        // This needs done based on imdb id - api doesn't return a URL
+        val intent: Intent = Uri.parse("https://www.youtube.com/watch?v=${youtubePreviewId}").let {
             Intent(Intent.ACTION_VIEW, it)
         }
         try {
@@ -132,12 +158,18 @@ class MovieDetailFragment : Fragment(R.layout.movie_detail), YouTubePlayer.OnIni
         startActivity(Intent.createChooser(intent, null))
     }
 
+    private fun onSimilarResultsFound(movie: Movie) {
+        val directions = MovieDetailFragmentDirections.navigateToMovieSimilarResults(movie)
+        findNavController().navigate(directions)
+    }
+
     override fun onInitializationSuccess(
         p0: YouTubePlayer.Provider?,
         p1: YouTubePlayer?,
         p2: Boolean
     ) {
-        TODO("Not yet implemented")
+        p1?.cueVideo(youtubePreviewId)
+        p1?.setPlayerStyle(YouTubePlayer.PlayerStyle.DEFAULT)
     }
 
     override fun onInitializationFailure(
@@ -145,10 +177,6 @@ class MovieDetailFragment : Fragment(R.layout.movie_detail), YouTubePlayer.OnIni
         p1: YouTubeInitializationResult?
     ) {
         TODO("Not yet implemented")
-    }
-
-    private fun onSimilarResultsFound(movie: Movie) {
-        val directions = MovieDetailFragmentDirections.navigateToMovieSimilarResults(movie)
-        findNavController().navigate(directions)
+        Log.e("YoutubePlayerFragment", "Initialization failure")
     }
 }
