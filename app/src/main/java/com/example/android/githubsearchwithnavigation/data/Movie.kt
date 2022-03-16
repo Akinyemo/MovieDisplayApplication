@@ -9,6 +9,9 @@ data class Movie(
     @Json(name = "original_title")
     val name: String,
 
+    @Json(name = "id")
+    val id: String,
+
     //Gonna be under overview for api
     @Json(name="overview")
     val description: String,
