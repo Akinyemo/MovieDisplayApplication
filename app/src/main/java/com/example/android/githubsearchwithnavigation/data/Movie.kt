@@ -9,9 +9,6 @@ data class Movie(
     @Json(name = "original_title")
     val name: String,
 
-    @Json(name = "id")
-    val id: String,
-
     //Gonna be under overview for api
     @Json(name="overview")
     val description: String,
@@ -20,6 +17,9 @@ data class Movie(
     val rating: Double,
 
     @Json(name="adult")
-    val adult: Boolean
+    val adult: Boolean,
+
+    @Json(name = "id")
+    val id: Integer
 
 ) : Serializable

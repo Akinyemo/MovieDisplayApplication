@@ -15,7 +15,7 @@ import retrofit2.http.Path
 interface VideoService {
     @GET("3/movie/{movie_id}/videos")
     suspend fun getMovieDetails(
-        @Path("movie_id") movie_id: String,
+        @Path("movie_id") movie_id: Integer,
         @Query("api_key") api_key: String
     ) : List<Video>
 

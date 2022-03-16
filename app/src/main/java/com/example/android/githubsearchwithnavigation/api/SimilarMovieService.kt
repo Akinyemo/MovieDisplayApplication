@@ -1,5 +1,6 @@
 package com.example.android.githubsearchwithnavigation.api
 
+import android.util.Log
 import com.example.android.githubsearchwithnavigation.data.MovieSearchResults
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -10,7 +11,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.Path
 
 interface SimilarMovieService {
-    @GET("3/search/movie/{movie_id}/similar")
+    @GET("3/movie/{movie_id}/similar")
     suspend fun getSimilarMovies(
         @Path("movie_id") movie_id: String,
         @Query("api_key") key: String,
@@ -28,6 +29,9 @@ interface SimilarMovieService {
                 .baseUrl(BASE_URL)
                 .addConverterFactory(MoshiConverterFactory.create(moshi))
                 .build()
+            Log.d("sauter_tag", "MovieService moshi: " + moshi.toString())
+            Log.d("sauter_tag", "MovieService retrofit: " + retrofit.create(SimilarMovieService::class.java).toString())
+            Log.d("sauter_tag", "Retrofit base URL: " + retrofit.baseUrl() )
             return retrofit.create(SimilarMovieService::class.java)
         }
     }

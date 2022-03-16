@@ -13,7 +13,7 @@ class VideoRepository(
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) {
     suspend fun getVideos(
-        movie_id: String,
+        movie_id: Integer,
         api_key: String
     ): Result<List<Video>> =
         withContext(ioDispatcher) {

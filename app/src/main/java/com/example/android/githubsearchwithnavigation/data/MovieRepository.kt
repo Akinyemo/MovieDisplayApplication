@@ -12,7 +12,7 @@ class MovieRepository(
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) {
     suspend fun get_movie_details(
-        movie_id: String,
+        movie_id: Integer,
         api_key: String
     ): Result<MovieDetails> =
         withContext(ioDispatcher) {

@@ -21,7 +21,7 @@ class VideoViewModel : ViewModel() {
     val loadingStatus: LiveData<LoadingStatus> = _loadingStatus
 
     fun loadVideos(
-        movie_id: String,
+        movie_id: Integer,
         api_key: String,
     ) {
         viewModelScope.launch {

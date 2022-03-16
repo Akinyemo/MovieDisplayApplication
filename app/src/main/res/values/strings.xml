@@ -11,6 +11,8 @@
     <string name="label_search_results">Movie Search Results</string>
     <string name="label_no_search_results">Sorry there were no Results</string>
 
+    <string name="label_similar_movies"> View Similar Movies</string>
+
     <string name="action_share">Share</string>
     <string name="share_text">%1$s on IMDb: %2$s</string>
 
@@ -28,33 +30,6 @@
     <string name="pref_language_key" translatable="false">language</string>
     <string name="pref_first_issues_key" translatable="false">first_issues</string>
 
-    <string name="pref_sort_entry_stars">Stars</string>
-    <string name="pref_sort_entry_forks">Forks</string>
-    <string name="pref_sort_entry_updated">Most-recently updated</string>
-
-    <string name="pref_sort_val_stars" translatable="false">stars</string>
-    <string name="pref_sort_val_forks" translatable="false">forks</string>
-    <string name="pref_sort_val_updated" translatable="false">updated</string>
-
-    <string name="pref_sort_default">@string/pref_sort_val_stars</string>
-
-    <string name="pref_language_entry_c">C</string>
-    <string name="pref_language_entry_cpp">C++</string>
-    <string name="pref_language_entry_java">Java</string>
-    <string name="pref_language_entry_kotlin">Kotlin</string>
-    <string name="pref_language_entry_javascript">Javascript</string>
-    <string name="pref_language_entry_rust">Rust</string>
-    <string name="pref_language_entry_python">Python</string>
-
-    <string name="pref_language_val_c" translatable="false">c</string>
-    <string name="pref_language_val_cpp" translatable="false">c++</string>
-    <string name="pref_language_val_java" translatable="false">java</string>
-    <string name="pref_language_val_kotlin" translatable="false">kotlin</string>
-    <string name="pref_language_val_javascript" translatable="false">javascript</string>
-    <string name="pref_language_val_rust" translatable="false">rust</string>
-    <string name="pref_language_val_python" translatable="false">python</string>
-
-    <string name="pref_language_not_set">Not set</string>
 
     <string name="rating_description">Rating:</string>
     <string name="tv_view_on_imdb">View on IMDb</string>

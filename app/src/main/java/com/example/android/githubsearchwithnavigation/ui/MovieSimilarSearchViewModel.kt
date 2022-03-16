@@ -5,33 +5,36 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.android.githubsearchwithnavigation.api.MovieService
 import com.example.android.githubsearchwithnavigation.api.SearchMovieService
-import com.example.android.githubsearchwithnavigation.data.*
+import com.example.android.githubsearchwithnavigation.api.SimilarMovieService
+import com.example.android.githubsearchwithnavigation.data.LoadingStatus
+import com.example.android.githubsearchwithnavigation.data.Movie
+import com.example.android.githubsearchwithnavigation.data.SearchMoviesRepository
+import com.example.android.githubsearchwithnavigation.data.SimilarMoviesRepository
 import kotlinx.coroutines.launch
 
-class MovieDetailViewModel : ViewModel() {
-    private val repository = MovieRepository(MovieService.create())
+class MovieSimilarSearchViewModel : ViewModel() {
+    private val repository = SimilarMoviesRepository(SimilarMovieService.create())
 
-    private val _searchResults = MutableLiveData<MovieDetails>(null)
-    val searchResults: LiveData<MovieDetails?> = _searchResults
+    private val _searchResults = MutableLiveData<List<Movie>?>(null)
+    val searchResults: LiveData<List<Movie>?> = _searchResults
 
     private val _loadingStatus = MutableLiveData(LoadingStatus.SUCCESS)
     val loadingStatus: LiveData<LoadingStatus> = _loadingStatus
 
-    fun loadMovieDetails(
-        movie_id: Integer,
+    fun loadSearchResults(
+        query: String,
         api_key: String,
+        include_adult: Boolean
     ) {
         viewModelScope.launch {
             _loadingStatus.value = LoadingStatus.LOADING
-            val result = repository.get_movie_details(movie_id,api_key)
+            val result = repository.loadRepositoriesSearch(api_key,query, include_adult)
             _searchResults.value = result.getOrNull()
             _loadingStatus.value = when (result.isSuccess) {
                 true ->  LoadingStatus.SUCCESS
                 false -> LoadingStatus.ERROR
             }
-            Log.d("sauter_tag", "ViewModel Results: " + result.toString())
         }
     }
 }
