@@ -117,18 +117,20 @@ class MovieDetailFragment : Fragment(R.layout.movie_detail), YouTubePlayer.OnIni
 
     private fun viewMovieOnIMDb() {
 
-        // This needs done based on imdb id - api doesn't return a URL
-        val intent: Intent = Uri.parse("https://www.imdb.com/title/${imdbId}").let {
-            Intent(Intent.ACTION_VIEW, it)
-        }
-        try {
-            startActivity(intent)
-        } catch (e: ActivityNotFoundException) {
-            Snackbar.make(
-                requireView(),
-                R.string.action_view_repo_error,
-                Snackbar.LENGTH_LONG
-            ).show()
+        if (imdbId !== null) {
+            // This needs done based on imdb id - api doesn't return a URL
+            val intent: Intent = Uri.parse("https://www.imdb.com/title/${imdbId}").let {
+                Intent(Intent.ACTION_VIEW, it)
+            }
+            try {
+                startActivity(intent)
+            } catch (e: ActivityNotFoundException) {
+                Snackbar.make(
+                    requireView(),
+                    R.string.action_view_repo_error,
+                    Snackbar.LENGTH_LONG
+                ).show()
+            }
         }
     }
 
